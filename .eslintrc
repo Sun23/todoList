@@ -1,0 +1,25 @@
+{
+    "extends": "airbnb",
+    "plugins": ["react","jsx-a11y","import"],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "globals": {
+        "document": true
+    },
+    "rules": {
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "indent": ["error", 4],
+        "linebreak-style": ["error", "windows"],
+        "semi": ["error", "never"],
+        "react/jsx-indent": ["error", 4],
+        "class-methods-use-this": "off",
+        "react/forbid-prop-types": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off",
+        "max-len": ["error",200]
+    }
+}
