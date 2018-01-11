@@ -59,8 +59,8 @@ module.exports = {
             dry: false,
         }),
         new webpack.DllReferencePlugin({
-            context: __dirname,
-            manifest: manifestFile,
+            context: __dirname, // 上下文
+            manifest: manifestFile, //  引入manifest.json
         }),
     ],
     resolve: {
