@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractText = require('extract-text-webpack-plugin')
 const CleanDist = require('clean-webpack-plugin')
 
+const manifestFile = require('./dist/manifest/manifest.json')
+
 const BASE_PATH = path.resolve(__dirname)
 const DEV_PATH = path.resolve(__dirname, 'src')
 module.exports = {
@@ -13,7 +15,7 @@ module.exports = {
     },
     output: {
         path: `${BASE_PATH}/dist`,
-        filename: 'js/[name].bundle.[hash].min.js', // 输出
+        filename: '[name].bundle.[hash].min.js', // 输出
     },
     module: {
         rules: [
@@ -51,10 +53,14 @@ module.exports = {
                 warnings: false,
             },
         }),
-        new CleanDist('dist/*', { // 清理以前的文件
+        new CleanDist('dist/*.js', { // 清理以前的文件
             root: __dirname,
             verbose: true,
             dry: false,
+        }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: manifestFile,
         }),
     ],
     resolve: {
